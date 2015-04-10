@@ -1,11 +1,8 @@
 package com.almondach.machao.covigator.Options;
 
-import android.support.annotation.NonNull;
-import android.text.Spanned;
 
-import java.util.Collection;
+import android.text.Spanned;
 import java.util.Map;
-import java.util.Set;
 import java.util.WeakHashMap;
 
 /**
@@ -23,8 +20,14 @@ public class HighlightOptions {
         public boolean HighlightCurrentLine = false;
     }
 
+
+
     private static Map<String,KeywordHighlightOpt> opts = new WeakHashMap<String,KeywordHighlightOpt>();
 
+
+    public KeywordHighlightOpt[] GetArray(){
+        return (KeywordHighlightOpt[])opts.values().toArray();
+    }
 
     public KeywordHighlightOpt GetKeywordOpt(String keyword){
         synchronized (this){
