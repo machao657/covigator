@@ -1,7 +1,10 @@
 package com.almondach.machao.covigator.CodeHighlighter;
 
+import android.text.Spannable;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
+
+import com.almondach.machao.covigator.CodeAnalyser.KeyworderMatcher;
 import com.almondach.machao.covigator.Options.HighlightOptions;
 
 /**
@@ -10,32 +13,36 @@ import com.almondach.machao.covigator.Options.HighlightOptions;
 public class ColoreSpanRender {
     private HighlightOptions opts;
     private HighlightOptions.KeywordHighlightOpt[] optsArray;
+    public static class SpanInfo{
+        String keyword;
+        static public final int MODE = Spannable.SPAN_INCLUSIVE_INCLUSIVE;
+        KeyworderMatcher.Occurences occurences;
+        ForegroundColorSpan foregroundColorSpan;
+        BackgroundColorSpan backgroundColorSpan;
+    }
+
+
     public ColoreSpanRender(){
     }
+
 
     public void SetHighlightOptions(HighlightOptions opts){
         this.opts = opts;
         optsArray = opts.GetArray();
     }
 
-    public ForegroundColorSpan[] GetForegroundColorSpans(){
+    public SpanInfo[] GetSpanColorInfos(){
 
-        ForegroundColorSpan[] foregroundColorSpans = new ForegroundColorSpan[optsArray.length];
+        SpanInfo[] spanInfos = new SpanInfo[optsArray.length];
         for (int n = 0;n<optsArray.length;n++){
-            foregroundColorSpans[n] = GetForegroundSpan(optsArray[n]);
+            spanInfos[n] = new SpanInfo();
+            spanInfos[n].keyword = optsArray[n].keyword;
+            spanInfos[n].foregroundColorSpan = GetForegroundSpan(optsArray[n]);
+
         }
-        return foregroundColorSpans;
+        return spanInfos;
     }
 
-    public BackgroundColorSpan[] GetBackgroundColorSpans(){
-
-        BackgroundColorSpan[] backgroundColorSpans= new BackgroundColorSpan[optsArray.length];
-        for (int n = 0;n<optsArray.length;n++){
-            backgroundColorSpans[n] = GetBackgroundSpan(optsArray[n]);
-        }
-
-        return backgroundColorSpans;
-    }
 
 
 

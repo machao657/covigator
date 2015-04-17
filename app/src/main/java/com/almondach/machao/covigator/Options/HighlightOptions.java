@@ -26,7 +26,10 @@ public class HighlightOptions {
 
 
     public KeywordHighlightOpt[] GetArray(){
-        return (KeywordHighlightOpt[])opts.values().toArray();
+        Object[] objArray = opts.values().toArray();
+        KeywordHighlightOpt[] optsArray = new KeywordHighlightOpt[objArray.length];
+        System.arraycopy(objArray,0,optsArray,0,objArray.length);
+        return optsArray;
     }
 
     public KeywordHighlightOpt GetKeywordOpt(String keyword){

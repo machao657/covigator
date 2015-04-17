@@ -9,8 +9,7 @@ import java.util.regex.Pattern;
  */
 public class KeyworderMatcher {
     static public class Occurences{
-        static public String keyword;
-        LinkedList<Location> locations = new LinkedList<Location>();
+        public LinkedList<Location> locations = new LinkedList<Location>();
 
         static public class Location{
             public int start;
@@ -19,18 +18,22 @@ public class KeyworderMatcher {
     }
 
     static private String source;
+    static private int sourceStartOffset;
 
     public KeyworderMatcher(){
-
     }
 
-    static public void SetSource(String source){
+    static public void SetSource(String source,int sourceOffset){
         KeyworderMatcher.source = source;
+        KeyworderMatcher.sourceStartOffset = sourceOffset;
+    }
+
+    static int GetOffset(int offsetInSource){
+        return sourceStartOffset + offsetInSource;
     }
 
     static public Occurences LocateOccurences(String keyword){
         Occurences occurences = new Occurences();
-        occurences.keyword = keyword;
 
         Pattern pattern = Pattern.compile(PadWhitespace(keyword));
         Matcher matcher = pattern.matcher(source);
@@ -43,8 +46,8 @@ public class KeyworderMatcher {
 
         while (matcher.find()){
             Occurences.Location loct = new Occurences.Location();
-            loct.start = matcher.start() + 1;
-            loct.end = matcher.end() - 1;
+            loct.start = GetOffset(matcher.start() + 1);
+            loct.end = GetOffset(matcher.end() - 1);
             occurences.locations.add(loct);
         }
     }
