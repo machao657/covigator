@@ -7,8 +7,16 @@
 
     <LinearLayout
         android:orientation="vertical"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#ffffffff"
+            android:text="please select a directory"/>
 
         <ListView android:id="@+id/dir_picker_list"
              android:layout_width="match_parent"
@@ -16,11 +24,12 @@
              android:layout_weight="5"/>
         
         <Button
+            android:theme="@style/Theme.AppCompat.Light"
             android:id="@+id/dir_picker_ok_button"
-            android:text="select this directory"
+            android:text="OK"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:gravity="center_horizontal"
             />
 
         </LinearLayout>

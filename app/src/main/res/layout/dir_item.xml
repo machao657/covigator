@@ -4,6 +4,7 @@
     android:id="@+id/dir_item_text"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingLeft="2dp"
     android:textAppearance="?android:attr/textAppearanceListItemSmall"
-    android:gravity="center_vertical"
+    android:gravity="left"
     android:minHeight="?android:attr/listPreferredItemHeightSmall" />

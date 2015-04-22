@@ -9,4 +9,6 @@ public class Configures {
     public final static String CUR_DIR_KEY = "current_directory";
     public final static String BLANK_STR = "";
 
+    public static String currentWorkingDirectory;
+
 }

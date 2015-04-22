@@ -105,10 +105,10 @@ public class DirPickerFragment extends Fragment implements AbsListView.OnItemCli
 
     }
 
-    private ArrayAdapter<DirContent.DirItem> NewAdapter(){
+    private ArrayAdapter<DirContent.FileDirPath> NewAdapter(){
         //got to get a new adapter to update list contents everytime
-        return  new ArrayAdapter<DirContent.DirItem>(getActivity(),
-                R.layout.dir_item, R.id.dir_item_text, DirContent.dirs);
+        return  new ArrayAdapter<DirContent.FileDirPath>(getActivity(),
+                R.layout.dir_item, R.id.dir_item_text, SelectDirActivity.dirContent.dirs);
     }
 
 }
