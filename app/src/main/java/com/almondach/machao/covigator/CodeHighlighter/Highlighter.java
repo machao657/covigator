@@ -1,6 +1,8 @@
 package com.almondach.machao.covigator.CodeHighlighter;
 
 import android.text.Spannable;
+import android.text.style.ForegroundColorSpan;
+
 import com.almondach.machao.covigator.CodeAnalyser.KeyworderMatcher;
 import com.almondach.machao.covigator.Options.HighlightOptions;
 
@@ -44,8 +46,12 @@ public class Highlighter {
     }
 
     private void HighlightAllMatches(ColoreSpanRender.SpanInfo spanInfo){
+
+
+
         for (KeyworderMatcher.Occurences.Location loc :spanInfo.occurences.locations){
-            spannable.setSpan(spanInfo.foregroundColorSpan,loc.start,loc.end,spanInfo.MODE);
+            spannable.setSpan(spanInfo.fgColorSpan(),loc.start,loc.end,spanInfo.MODE);
+
         }
     }
 

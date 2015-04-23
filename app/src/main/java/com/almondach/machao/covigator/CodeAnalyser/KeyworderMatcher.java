@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
  * Created by machao on 4/10/15.
  */
 public class KeyworderMatcher {
+    public static final String RGX_NON_DIGIT_CHARACTER = "[^0-9A-Za-z]";
     static public class Occurences{
         public LinkedList<Location> locations = new LinkedList<Location>();
 
@@ -53,6 +54,6 @@ public class KeyworderMatcher {
     }
 
     static private String PadWhitespace(String keyword){
-        return "\\s" + keyword + "\\s";
+        return RGX_NON_DIGIT_CHARACTER + keyword + RGX_NON_DIGIT_CHARACTER;
     }
 }

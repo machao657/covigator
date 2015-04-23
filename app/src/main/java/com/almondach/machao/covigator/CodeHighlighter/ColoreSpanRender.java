@@ -17,8 +17,12 @@ public class ColoreSpanRender {
         String keyword;
         static public final int MODE = Spannable.SPAN_INCLUSIVE_INCLUSIVE;
         KeyworderMatcher.Occurences occurences;
-        ForegroundColorSpan foregroundColorSpan;
-        BackgroundColorSpan backgroundColorSpan;
+        int foregroundColor;
+        int backgroundColor;
+
+        public ForegroundColorSpan fgColorSpan(){
+            return new ForegroundColorSpan(foregroundColor);
+        }
     }
 
 
@@ -37,7 +41,7 @@ public class ColoreSpanRender {
         for (int n = 0;n<optsArray.length;n++){
             spanInfos[n] = new SpanInfo();
             spanInfos[n].keyword = optsArray[n].keyword;
-            spanInfos[n].foregroundColorSpan = GetForegroundSpan(optsArray[n]);
+            spanInfos[n].foregroundColor = optsArray[n].foregroundColor;
 
         }
         return spanInfos;
@@ -45,14 +49,5 @@ public class ColoreSpanRender {
 
 
 
-
-    private ForegroundColorSpan GetForegroundSpan(HighlightOptions.KeywordHighlightOpt opt){
-        return new ForegroundColorSpan(opt.foregroundColor);
-
-    }
-
-    private BackgroundColorSpan GetBackgroundSpan(HighlightOptions.KeywordHighlightOpt opt){
-        return new BackgroundColorSpan(opt.backgroundColor);
-    }
 
 }
